@@ -1,0 +1,87 @@
+
+## COPIED FROM DATASHEET
+
+########  PIN CONFIGURATION DETAILS USED ON IIOT DEVICES ########
+
+5v pins on raspberry pi (GPIO.BOARD PIN NUMBERS)     :       2,4
+3V pins of raspberry pi (GPIO.BOARD PIN NUMBERS)     :       1,17
+ground pins of raspberry pi (GPIO.BOARD PIN NUMBERS) :       6,9,14,20,25,30,34,39
+
+********************Pins dedicated only for Signals( 12 pins BOARD PIN NUMBERS )**************************
+THESE  ARE STANDARD SIGNALS GIVEN PREDEFINED BUT IT AND BE CONFIGURED BY USER AFTERWARDS 
+USER CAN SET ANY SIGNAL FOR ANY PIN NUMBER 
+
+ID   PIN      SIGNAL
+1     7       RESET
+2     11      SPINDLE   
+3     12      MACHINE
+4     15      CYCLE
+5     16      EMERGENCY
+6     18      RUNOUTNOTOK
+7     22      ALARM
+8     29      M30
+9     13      EXTRA1
+10    19      EXTRA2
+11    21      EXTRA3
+12    23      EXTRA4
+
+***************HOLDING RELAY PIN CONFIGURATIONS******************
+PIN NUMBERS ARE SUBJECTED TO GPIO.BOARD
+
+RELAY NAME                                PIN
+RELAY 1 (PRIMARY RELAY)                   31  (GPIO 6)
+RELAY 2 (SECONDARY RELAY)                 37  (GPIO 26)
+
+
+**************BATTERY BACKUP INPUT PIN***************************
+PIN NUMBERS ARE SUBJECTED TO GPIO.BOARD
+
+POWER FAILURE INPUT PIN                             35 (GPIO 19)
+
+
+**************ON BOARD LED INDICATORS****************************
+LED INDICATIOR NAME                       PIN
+1.NETWORK INDICATOR                       36 (GPIO 16)
+2.FAN INDICATOR                           38 (GPIO 20)
+3.MACHINE HOLD ON/OFF INDICATOR           40 (GPIO 21) 
+
+
+
+***************RTC CONNECTION FOR ALL DEVICES*********************
+
+SIGNAL NAME      PIN NUMBER 
+SDA                 3
+SCK                 5 
+VCC                 PIN 2 OR 4 
+GROUND PINS TO BE USED FROM ANY PIN MENTIONED ABOVE 
+
+
+***************Autostart chromium in kiosk mode**********************
+/etc/xdg/lxsession/LXDE-pi/autostart
+
+#@lxpanel --profile LXDE-pi
+#@pcmanfm --desktop --profile LXDE-pi
+#@xscreensaver -no-splash
+#@point-rpi
+#@/home/pi/Desktop/App2/./App
+
+@xset s off   #screen saver off    
+@xset -dpms   
+@xset s noblank   #no blank screen
+@chromium-browser --kiosk http://google.com/  # load chromium after boot and open the website in full screen mode
+
+
+disbale sleep mode in raspberry pi
+$ sudo nano /etc/lightdm/lightdm.conf
+# don't sleep the screen
+xserver-command=X -s 0 dpms
+
+
+
+
+
+
+
+
+
+
